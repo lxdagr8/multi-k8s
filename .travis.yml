@@ -6,7 +6,7 @@ services:
   - docker
 
 before_install:
-  - docker build -f alexdedmon/react-test -f ./client/Dockerfile.dev ././client
+  - docker build -t alexdedmon/react-test -f ./client/Dockerfile.dev ././client
 
 scripts:
   - docker run -e CI=true alexdedmon/react-test npm test
@@ -16,3 +16,7 @@ after_success:
   - docker build -t alexdedmon/multi-nginx ./nginx
   - docker build -t alexdedmon/multi-server ./server 
   - docker build -t alexdedmon/multi-worker ./worker 
+
+  # Log in to the docker CLI
+  
+  # Take those images and push them to docker hub
