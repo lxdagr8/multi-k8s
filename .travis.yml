@@ -18,5 +18,10 @@ after_success:
   - docker build -t alexdedmon/multi-worker ./worker 
 
   # Log in to the docker CLI
-  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password---password-stdin
+
   # Take those images and push them to docker hub
+  - docker push alexdedmon/multi-client
+  - docker push alexdedmon/multi-nginx
+  - docker push alexdedmon/multi-server
+  - docker push alexdedmon/multi-worker
